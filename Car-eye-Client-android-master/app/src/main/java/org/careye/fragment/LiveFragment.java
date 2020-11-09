@@ -67,6 +67,7 @@ public class LiveFragment extends Fragment implements View.OnClickListener {
     private MediaView mCurrPlayer;
     private List<MediaView> mMvPlayers = new ArrayList<>();
     private String[] urls = {"", "", "", "", "", "", "", ""};
+    private String currentURL;
 
     private Toolbar toolbar;
 
@@ -75,16 +76,6 @@ public class LiveFragment extends Fragment implements View.OnClickListener {
     private ImageView mIvVideo;
     private ImageView mIvRec;
     private ImageView iv_full_screen;
-
-<<<<<<< HEAD
-    private String currentURL;// = "rtmp://202.69.69.180:443/webcast/bshdlive-pc";
-=======
-    private String URL1;
-    private String URL2;
-    private String URL3;
-    private String URL4;
-    private String URL = "rtmp://202.69.69.180:443/webcast/bshdlive-pc";
->>>>>>> parent of d1a9b28... fix bug
 
     private DepartmentCar departmentCar;
     private String terminalCurr;
@@ -230,7 +221,7 @@ public class LiveFragment extends Fragment implements View.OnClickListener {
             }
             break;
             case R.id.iv_play:
-                play(mCurrPlayer, URL1);
+                play(mCurrPlayer, currentURL);
                 break;
             case R.id.iv_voice:
                 setMuteEnable(mCurrPlayer);
@@ -354,14 +345,9 @@ public class LiveFragment extends Fragment implements View.OnClickListener {
                     if (type.equals("0")) {
                         switch (id) {
                             case "1":
-<<<<<<< HEAD
                                 urls[0] = dataObj.get("url").getAsString();
                                 play(mMvPlayers.get(0), urls[0]);
                                 currentURL = urls[0];
-=======
-                                URL1 = dataObj.get("url").getAsString();
-                                play(mMvPlayer1, URL1);
->>>>>>> parent of d1a9b28... fix bug
                                 break;
                             case "2":
                                 urls[1] = dataObj.get("url").getAsString();
@@ -465,9 +451,6 @@ public class LiveFragment extends Fragment implements View.OnClickListener {
         if (isPlaying) {
             player.stop();
         } else {
-//            // TODO
-//            url = URL;
-
             player.stop();
             player.play(url);
 
@@ -485,7 +468,6 @@ public class LiveFragment extends Fragment implements View.OnClickListener {
         updateRecView(player.getRecState());
     }
 
-<<<<<<< HEAD
     private void initMvPlayer() {
         mMvPlayers.clear();
 
@@ -524,36 +506,6 @@ public class LiveFragment extends Fragment implements View.OnClickListener {
             mMvPlayer.setVisibility(View.VISIBLE);
             RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             mMvPlayer.setLayoutParams(params);
-=======
-    /*
-    * 切换播放窗口对应的功能区状态
-    * */
-    private void switchSelect(MediaView mMvPlayer) {
-        if (mMvPlayer == mMvPlayer1) {
-            if (mv_player_ll2.getVisibility() == View.VISIBLE) {
-                mv_player_ll2.setVisibility(View.GONE);
-                mMvPlayer2.setVisibility(View.GONE);
-            } else {
-                mv_player_ll2.setVisibility(View.VISIBLE);
-                mMvPlayer2.setVisibility(View.VISIBLE);
-            }
-        } else if (mMvPlayer == mMvPlayer2) {
-            if (mv_player_ll2.getVisibility() == View.VISIBLE) {
-                mv_player_ll2.setVisibility(View.GONE);
-                mMvPlayer1.setVisibility(View.GONE);
-            } else {
-                mv_player_ll2.setVisibility(View.VISIBLE);
-                mMvPlayer1.setVisibility(View.VISIBLE);
-            }
-        } else if (mMvPlayer == mMvPlayer3) {
-            if (mv_player_ll1.getVisibility() == View.VISIBLE) {
-                mv_player_ll1.setVisibility(View.GONE);
-                mMvPlayer4.setVisibility(View.GONE);
-            } else {
-                mv_player_ll1.setVisibility(View.VISIBLE);
-                mMvPlayer4.setVisibility(View.VISIBLE);
-            }
->>>>>>> parent of d1a9b28... fix bug
         } else {
             int size = 10;
             int row = mMvPlayers.size() / 2 + mMvPlayers.size() % 2;
@@ -579,7 +531,6 @@ public class LiveFragment extends Fragment implements View.OnClickListener {
                     mediaView.setLayoutParams(params);
                 }
             }
-<<<<<<< HEAD
         }
     }
 
@@ -595,8 +546,6 @@ public class LiveFragment extends Fragment implements View.OnClickListener {
         } else {
             mMvPlayer.setExpand(true);
             layoutMediaView(mMvPlayer, false);
-=======
->>>>>>> parent of d1a9b28... fix bug
         }
 
         mCurrPlayer.setSelect(false);
